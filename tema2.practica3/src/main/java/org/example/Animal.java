@@ -1,84 +1,86 @@
 package org.example;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Animal {
+
     @JsonProperty("id")
-    private String id;
+    private int id;  // Cambiado a int para id autonómico
+
     @JsonProperty("nombre")
     private String name;
+
     @JsonProperty("especie")
     private String specie;
+
     @JsonProperty("edad")
     private int age;
+
     @JsonProperty("sexo")
-    private String genre;
+    private String gender;
+
     @JsonProperty("fechaIngreso")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") // Formato legible para la fecha
-    private Date dateOfEntry;
-    @JsonProperty("adoptado")
-    @JsonDeserialize(using = BooleanFromYesNoDeserializer.class)
+    @JsonDeserialize(using = CustomDateDeserializer.class) // Para deserializar
+    @JsonSerialize(using = CustomDateSerializer.class) // Para serializar
+    private Date dateOfEntry;  // Cambiado a Date
+
+    @JacksonXmlProperty(localName = "adoptado")
+    @JsonDeserialize(using = AdoptadoDeserializer.class)
+    @JsonSerialize(using = AdoptadoSerializer.class)
     private boolean adopted;
 
     public Animal() {}
 
-    public String getId() {
+    // Getters y Setters
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public boolean isAdopted() {
+        return adopted;
     }
 
-    public String getName() {
-        return name;
-    }
+    public void setId(int id) { this.id = id; }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSpecie() {
-        return specie;
     }
 
     public void setSpecie(String specie) {
         this.specie = specie;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public void setAge(int age) {
         this.age = age;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
     public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public Date getDateOfEntry() {
-        return dateOfEntry;
+        this.gender = genre;
     }
 
     public void setDateOfEntry(Date dateOfEntry) {
         this.dateOfEntry = dateOfEntry;
     }
 
-    public boolean getAdopted() {
-        return adopted;
-    }
-
     public void setAdopted(boolean adopted) {
         this.adopted = adopted;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return "id=" + id +
+                ", nombre='" + name + '\'' +
+                ", especie='" + specie + '\'' +
+                ", edad=" + age +
+                ", sexo='" + gender + '\'' +
+                ", fechaIngreso=" + sdf.format(dateOfEntry) +
+                ", adoptado='" + (adopted ? "Si" : "No") + '\'';
     }
 }
