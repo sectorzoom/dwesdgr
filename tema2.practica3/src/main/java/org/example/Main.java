@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final String FICHERO_JSON = "C:/Users/david/Documents/2 DAW/dwesdgr/tema2.practica3/src/main/resources/animales.json";
+    private static final String FICHERO_JSON = "C:/Users/david/Documents/2 DAW/Desarrollo Web en Entorno Servidor/Ejercicios/dwesdgr/tema2.practica3/src/main/resources/animales.json";
     private static AnimalShelter protectora = new AnimalShelter();
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
