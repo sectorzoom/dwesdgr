@@ -9,7 +9,7 @@ public class Main {
 
         //Cargamos el CSV
         YoutuberService youtubers = new YoutuberService();
-        youtubers.cargarYoutubers("/home/davgimrod2/IdeaProjects/dwesdgr/tema2.practica1/src/main/resources/youtubers.csv");
+        youtubers.cargarYoutubers("C:/Users/david/Documents/2 DAW/Desarrollo Web en Entorno Servidor/Ejercicios/dwesdgr/tema2.practica1/src/main/resources/youtubers.csv");
 
         // Youtuber con más seguidores
         showYoutuberWithMostFollowers(youtubers);
