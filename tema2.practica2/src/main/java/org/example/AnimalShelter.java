@@ -3,7 +3,6 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.example.Animal;
 
 import java.io.IOException;
 import java.nio.file.Files;

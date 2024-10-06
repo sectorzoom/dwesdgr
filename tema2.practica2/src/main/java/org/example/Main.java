@@ -2,11 +2,11 @@ package org.example;
 
 import java.nio.file.Path;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         AnimalShelter animalShelter = new AnimalShelter(new ArrayList<>());
-        Path RUTA_XML = Path.of("C:/Users/david/Documents/2 DAW/Pruebas2DAWDWES/PruebaEj2/src/main/resources/protectoraDeAnimales.xml");
+        Path RUTA_XML = Path.of("C:/Users/david/Documents/2 DAW/dwesdgr/tema2.practica2/src/main/resources/protectoraDeAnimales.xml");
         loadXML(animalShelter, RUTA_XML);
 
         while (true) {
