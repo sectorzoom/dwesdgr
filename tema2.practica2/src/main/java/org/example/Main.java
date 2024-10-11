@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         AnimalShelter animalShelter = new AnimalShelter(new ArrayList<>());
-        Path RUTA_XML = Path.of("C:/Users/david/Documents/2 DAW/dwesdgr/tema2.practica2/src/main/resources/protectoraDeAnimales.xml");
+        Path RUTA_XML = Path.of("tema2.practica2/src/main/resources/protectoraDeAnimales.xml");
         loadXML(animalShelter, RUTA_XML);
 
         while (true) {

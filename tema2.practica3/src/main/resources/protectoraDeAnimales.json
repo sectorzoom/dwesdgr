@@ -1,0 +1,11 @@
+{
+  "animales" : [ {
+    "id" : 1,
+    "nombre" : "Rengar",
+    "especie" : "Gato",
+    "edad" : 7,
+    "sexo" : "Macho",
+    "fechaIngreso" : "2015-07-23",
+    "adoptado" : "Sí"
+  } ]
+}

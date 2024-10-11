@@ -6,12 +6,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Optional;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Main {
 
@@ -19,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         AnimalShelter animalShelter = new AnimalShelter(new ArrayList<>());
-        Path RUTA_JSON = Path.of("C:/Users/david/Documents/2 DAW/Desarrollo Web en Entorno Servidor/Ejercicios/dwesdgr/tema2.practica3/src/main/resources/protectoraDeAnimales.json");
+        Path RUTA_JSON = Path.of("tema2.practica3/src/main/resources/protectoraDeAnimales.json");
         loadJSON(animalShelter, RUTA_JSON);
 
         while (true) {
@@ -112,22 +110,16 @@ public class Main {
         System.out.print("Edad: ");
         animal.setAge(Integer.parseInt(scanner.nextLine()));
         System.out.print("Sexo (Macho/Hembra): ");
-        animal.setGenre(scanner.nextLine());
+        animal.setGender(scanner.nextLine());
 
         // Captura de la fecha de ingreso
         System.out.print("Fecha de ingreso (YYYY-MM-DD): ");
         String fechaInput = scanner.nextLine();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        formatoFecha.setLenient(false);
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        try {
-            Date fechaIngreso = formatoFecha.parse(fechaInput);
-            animal.setDateOfEntry(fechaIngreso); // Establecer la fecha en el objeto Animal
-            System.out.println("Fecha de ingreso: " + formatoFecha.format(fechaIngreso));
-        } catch (ParseException e) {
-            System.out.println("Formato de fecha inválido. Asegúrate de usar el formato YYYY-MM-DD.");
-            return; // Salir si la fecha es inválida
-        }
+        LocalDate fechaIngreso = LocalDate.parse(fechaInput);
+        animal.setDate(fechaIngreso); // Establecer la fecha en el objeto Animal
+        System.out.println("Fecha de ingreso: " + fechaIngreso.format(formatoFecha));
 
         // Captura de adopción
         System.out.print("¿Adoptado? (Sí/No): ");
