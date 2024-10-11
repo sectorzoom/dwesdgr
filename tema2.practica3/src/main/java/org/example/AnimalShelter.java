@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class AnimalShelter {
 
     // Getter y Setter
@@ -16,10 +17,4 @@ public class AnimalShelter {
     private List<Animal> animales;
 
 
-    @Override
-    public String toString() {
-        return "ListaAnimales{" +
-                "animales=" + animales +
-                '}';
-    }
 }

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class Animal {
 
     @JsonProperty("id")
-    private int id;  // Cambiado a int para id autonómico
+    private int id;
 
     @JsonProperty("nombre")
     private String name;
@@ -46,7 +45,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        // Usamos DateTimeFormatter para formatear LocalDate
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return "id=" + id +
                 ", nombre='" + name + '\'' +

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -56,7 +55,7 @@ public class Main {
             return objectMapper.readValue(ruta.toFile(), AnimalShelter.class);
         } catch (IOException e) {
             System.out.println("Error al leer el archivo JSON: " + e.getMessage());
-            return new AnimalShelter(new ArrayList<>()); // Retorna una lista vacía si hay un error
+            return new AnimalShelter(new ArrayList<>());
         }
     }
 
@@ -118,7 +117,7 @@ public class Main {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         LocalDate fechaIngreso = LocalDate.parse(fechaInput);
-        animal.setDate(fechaIngreso); // Establecer la fecha en el objeto Animal
+        animal.setDate(fechaIngreso);
         System.out.println("Fecha de ingreso: " + fechaIngreso.format(formatoFecha));
 
         // Captura de adopción
@@ -130,7 +129,7 @@ public class Main {
             animal.setAdopted(false);
         } else {
             System.out.println("Respuesta inválida. Por favor, introduce 'si' o 'no'.");
-            return; // Salir si la respuesta es inválida
+            return;
         }
 
         animalShelter.getAnimales().add(animal);
