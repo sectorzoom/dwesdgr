@@ -2,8 +2,10 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
+public class MainSQLRemoto {
 
     private static final String urlConexion = "jdbc:postgresql://hogwarts.cf0oge62knpk.us-east-1.rds.amazonaws.com/hogwarts";
     private static final String USER = "postgres";
@@ -50,11 +52,9 @@ public class Main {
 
             // Desmatricular a un estudiante de una asignatura
             HogwartsDatabase.desmatricularEstudianteDeAsignatura(10, 2, connection);  // Desmatricular estudiante con id 10 de la asignatura con id 2
-
              */
 
         }
-
     }
 }
 
