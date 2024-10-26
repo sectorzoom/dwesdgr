@@ -13,7 +13,7 @@ public class MainSQLRemoto {
     public static void main(String[] args) throws SQLException {
         // Establecer conexión única
         try (Connection connection = DriverManager.getConnection(urlConexion, USER, PASSWORD)) {
-            /*
+
             System.out.println("\nEstudiantes y su casa");
             HogwartsDatabase.consultarEstudianteYCasa(connection);
             System.out.println("\nEstudiantes y su mascota");
@@ -30,9 +30,10 @@ public class MainSQLRemoto {
             HogwartsDatabase.consultarMejorCalificacion(connection, "Transformaciones");
             System.out.println("Promedio de calificaciones por casa en una asignatura");
             HogwartsDatabase.promedioCalificacionesPorCasaDeAsignatura(connection, "Pociones");
-             */
             System.out.println("Incrementar las notas un 10%");
             HogwartsDatabase.actualizarCalificaciones(connection);
+            System.out.println("Eliminar Asignaturas Optativas: ");
+            HogwartsDatabase.desmatricularEstudiantes(connection);
 
 
 

@@ -181,11 +181,22 @@ public class HogwartsDatabase {
         }
 
     }
-    //10. Desmatricular estudiantes
-    //Eliminar asignaturas optativas de los estudiantes que tienen calificaciones inferiores a 5 en dichas asignaturas.
-    public static void desmatricularEstudiantes(Connection conection) {
 
+    // 10. Desmatricular estudiantes
+    // Eliminar asignaturas optativas de los estudiantes que tienen calificaciones inferiores a 5 en dichas asignaturas.
+    public static void desmatricularEstudiantes(Connection conection) {
+        String sql = "DELETE FROM Estudiante_Asignatura " +
+                "WHERE calificacion < 5 AND id_asignatura IN " +
+                "(SELECT id_asignatura FROM Asignatura WHERE obligatoria = FALSE)";
+        try (Statement consulta = conection.createStatement()) {
+            int filasAfectadas = consulta.executeUpdate(sql);
+            System.out.println("Se han desmatriculado " + filasAfectadas + " asignaturas optativas de estudiantes con calificaciones inferiores a 5.");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
 
 
