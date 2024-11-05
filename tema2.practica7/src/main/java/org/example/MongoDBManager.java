@@ -98,9 +98,7 @@ public class MongoDBManager {
     }
 
     public void showProfiles() {
-        for (Profile profile : profiles.find()) {
-            System.out.println(profile);
-        }
+        profiles.find().forEach(System.out::println);
     }
 
     public void showPosts(String profileName) {
