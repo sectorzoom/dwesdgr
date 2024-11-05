@@ -43,6 +43,9 @@ public class DummySocialNetwork {
                     System.out.println("Borrar mi perfil");
                     mongoDBManager.deleteProfile();
                     break;
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
                 default:
                     System.out.println("Opción no válida");
             }
