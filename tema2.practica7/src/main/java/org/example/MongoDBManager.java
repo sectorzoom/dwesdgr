@@ -59,20 +59,20 @@ public class MongoDBManager {
 
 
     public void publishPost(String title, String content) {
-        if (myProfile == null) {
-            System.out.println("Primero debes crear tu perfil.");
-            return;
-        }
-        Post post = new Post();
-        post.setTitle(title);
-        post.setContent(content);
-        post.setPublishedDate(LocalDate.now());
-        post.setLikes(0);
-        post.setComments(new ArrayList<>());
+        if (myProfile != null) {
+            Post post = new Post();
+            post.setTitle(title);
+            post.setContent(content);
+            post.setPublishedDate(LocalDate.now());
+            post.setLikes(0);
+            post.setComments(new ArrayList<>());
 
-        myProfile.getPosts().add(post);
-        profiles.replaceOne(eq("_id", myProfile.getId()), myProfile);
-        System.out.println("Publicación agregada.");
+            myProfile.getPosts().add(post);
+            profiles.replaceOne(eq("_id", myProfile.getId()), myProfile);
+            System.out.println("Publicación agregada.");
+        } else {
+            System.out.println("Primero debes crear tu perfil.");
+        }
     }
 
 
@@ -133,7 +133,9 @@ public class MongoDBManager {
 
     public void commentPost(String profileName, String title, String comment) {
         Profile profile = profiles.find(eq("name", profileName)).first();
-        if (profile != null) {
+        if (profile == null) {
+            System.out.println("Perfil no encontrado.");
+        } else {
             for (Post post : profile.getPosts()) {
                 if (post.getTitle().equals(title)) {
                     post.getComments().add(comment);
@@ -144,8 +146,6 @@ public class MongoDBManager {
                     System.out.println("Post no encontrado.");
                 }
             }
-        } else {
-            System.out.println("Perfil no encontrado.");
         }
     }
 
